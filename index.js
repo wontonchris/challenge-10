@@ -12,7 +12,7 @@ class Svg {
     }
   
     render() {
-      return `<svg version="1.0" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`;
+      return `<svg version="wontonchris:1.0" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`;
     }
   
     setTextElement(text, color) {
@@ -20,10 +20,31 @@ class Svg {
     }
   
     setShapeElement(shape, color) {
-      this.shapeElement = `<${shape} cx="50%" cy="50%" r="100" height="100%" width="100%" fill="${color}"></${shape}>`;
-    }
+      let shapeElement = '';
+        switch (shape) {
+            case 'Circle':
+                const circle = new Circle();
+                circle.setColor(color);
+                shapeElement = circle.render();
+                break;
+            case 'Square':
+                const square = new Square();
+                square.setColor(color);
+                shapeElement = square.render();
+                break;
+            case 'Triangle':
+                const triangle = new Triangle();
+                triangle.setColor(color);
+                shapeElement = triangle.render();
+                break;
+            default:
+                break;
+
   }
-  
+
+    this.shapeElement = shapeElement;
+    }
+}
 
 
   
